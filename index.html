@@ -71,61 +71,126 @@ body {
   height: 100%;
 }
 
-#sun {
+#sun, .planet {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 30px;
-  height: 30px;
-  margin-top: -15px;
-  margin-left: -15px;
-  border-radius: 50%;
-  background-color: #FB7209;
-  box-shadow: 0 0 60px rgba(255, 160, 60, 0.4);
-  z-index: 1;
   width: 1em;
   height: 1em;
-  margin-top: -.5em;
-  margin-left: -.5em;
-  font-size: 24em;
+  margin-top: -0.5em;
+  margin-left: -0.5em;
+  border-radius: 50%;
+}
+#sun {
+  background-color: #FB7209;
   background-repeat: no-repeat;
   background-size: cover;
+  box-shadow: 0 0 60px rgba(255, 160, 60, 0.4);
   background-image: url("images/sun.png")
 }
 
-.myelement {
-  animation: 'fader' 2s linear;
-  animation-name: orbit;
-  animiation-duration: 2s;
-  animation-timing-function: linear;
+.planet {
+  background-color: #202020;
+  background-repeat: no-repeat;
+  background-size: cover;
   animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  background-image: url("images/mercury.png")
 }
 
-@keyframes fader {
-  0%   { opacity: 1; }
-  50%  { opacity: 0; }
-  100% { opacity: 1; }
+.orbit {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  animation-name: orbit;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
 }
+
+@keyframes orbit {
+  0%   { transform: rotateZ(0deg); }
+  100% { transform: rotateZ(-360deg); }
+}
+
+/* Orbit sizes */
+#mercury.orbit {
+  width: 12em;
+  height: 12em;
+  margin-top: -6em;
+  margin-left: -6em;
+}
+/* Planet starting positions */
+#mercury .planet {
+  left: 50%;
+  top: -1%;
+}
+/* Planet animation durations */
+#mercury.orbit {
+  animation-duration: 2.89016s;
+}
+
+/* Planet sizes */
+#sun {
+	font-size: 24em;
+}
+#mercury {
+	font-size: 4em;
+}
+
+/* Planet shadow animations */
+#mercury .planet {
+  animation-name: shadow-mercury;
+  animation-duration: 2.89016s; }
+
+@keyframes shadow-mercury {
+  0% {
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+    /* TOP */ }
+
+  25% {
+    box-shadow: inset 16px 0 8px rgba(0, 0, 0, 0.5);
+    /* LEFT */ }
+
+  50% {
+    box-shadow: inset 40px -20px 16px rgba(0, 0, 0, 0.5);
+    /* BOTTOM */ }
+
+  50.01% {
+    box-shadow: inset -40px -20px 16px rgba(0, 0, 0, 0.5);
+    /* BOTTOM */ }
+
+  75% {
+    box-shadow: inset -16px 0 8px rgba(0, 0, 0, 0.5);
+    /* RIGHT */ }
+
+  100% {
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+    /* TOP */ }
+}
+
 </style>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
 
 </head>
 
 <body>
-  <body>
-    <body>
-  <div id="universe">
-    <div id="galaxy">
-      <div id="sun">
-      </div>
-    </div>
+<body>
+<div id="universe">
+<div id="galaxy">
+  <div id="sun">
   </div>
-
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+  <div id="mercury" class="orbit">
+    <div class="planet"></div>
+  </div>
+</div>
+</div>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
 </body>
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js'></script>
 
 
